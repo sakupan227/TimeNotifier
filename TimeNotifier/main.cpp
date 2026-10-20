@@ -2,6 +2,7 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
+#include <thread>
 using namespace std;
 using namespace std::chrono;
 
@@ -32,9 +33,12 @@ int main(){
     cin_hour(hour);
     cin_min(min);
 
-    // time_point p = system_clock::now();
-    // time_t t=system_clock::to_time_t(p);
-    // tm *lt = localtime(&t);
+    time_point p = system_clock::now();
+    time_t t=system_clock::to_time_t(p);
+    tm *lt = localtime(&t);
+    if(hour==lt->tm_hour && min==lt->tm_min){
+        cout << "一致する";
+    }
     // cout <<"現在時刻："<<setfill('0')
     //      << setw(2) <<(*lt).tm_hour<< ":"
     //      << setw(2)<<(*lt).tm_min << ":"
